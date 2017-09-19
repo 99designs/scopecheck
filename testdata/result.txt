@@ -1,2 +1,2 @@
 testdata/testdata.go:15:3: accessing outer scope when closer var of same type exists. Did you mean r2?
-testdata/testdatad.go:24:3: accessing outer scope when closer var of same type exists. Did you mean t2?
+testdata/testdata.go:24:3: accessing outer scope when closer var of same type exists. Did you mean t2?

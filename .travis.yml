@@ -1,0 +1,11 @@
+language: go
+
+install:
+  - go get github.com/pressly/chi
+
+go:
+  - 1.7
+  - 1.8
+  - 1.9
+
+script: ./test.sh
