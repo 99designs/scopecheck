@@ -164,6 +164,12 @@ func similar(x, y types.Type) bool {
 			return false
 		}
 
+		if _, ok := y.(*types.Interface); ok {
+			if len(yMethods) < len(xMethods) {
+				xMethods, yMethods = yMethods, xMethods
+			}
+		}
+
 		for _, method := range xMethods {
 			yMethod := yMethods.getByName(method.Name())
 			if yMethod == nil || !types.Identical(method.Type(), yMethod.Type()) {

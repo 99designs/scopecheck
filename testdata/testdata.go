@@ -69,3 +69,32 @@ func _() {
 		fmt.Println(i, j)
 	}(i)
 }
+
+type DB interface {
+	Query(x, y int) bool
+	InTX(func(TX))
+}
+
+type TX interface {
+	DB
+
+	Commit(s string) int
+}
+
+// Fails
+func _() {
+	var db DB
+
+	db.InTX(func(tx TX) {
+		db.Query(1, 2)
+	})
+}
+
+// Passes
+func _() {
+	var db DB
+
+	db.InTX(func(tx TX) {
+		tx.Query(1, 2)
+	})
+}
